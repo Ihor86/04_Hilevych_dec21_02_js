@@ -66,6 +66,8 @@ switch (dayOfWeek) {
     case 7:
         console.log("10:00. Reading new book");
         break;
+    default:
+        console.log('Дані введено некоректно');
 }
 
 
