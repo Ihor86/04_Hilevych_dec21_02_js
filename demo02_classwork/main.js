@@ -44,7 +44,7 @@ if (typeOfX === 'number') {
     console.log(1)
 } else if (typeOfX === 'string'){
      console.log(2)
-} else if (typeOfX === 'boolean' || typeOfX === 'object' || typeOfX === 'array') {
+} else if (typeOfX === 'boolean' || typeOfX === 'object') {
     console.log(3)
 } else {
     console.log("інше");
