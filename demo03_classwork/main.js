@@ -54,26 +54,26 @@ for (let temp of arr1) {
 }
 // 8. вивести масив в зворотньому порядку.
 console.log(`Task 8`);
-for (let i8 = arr1.length - 1; i8 > 0; i8--) {
+for (let i8 = arr1.length - 1; i8 >= 0; i8--) {
     console.log(arr1[i8]);
 }
 // 9. всі попередні завдання (окрім 8), але в зворотньому циклі (с заду на перед)
 //     1. перебрати його циклом while
 console.log(`Task 9.1`);
 i91 = arr1.length - 1;
-while (i91 > 0) {
+while (i91 >= 0) {
     console.log(arr1[i91]);
     i91--;
 }
 // //     2. перебрати його циклом for
 console.log(`Task 9.2`);
-for (let i92 = arr1.length - 1; i92 > 0; i92--) {
+for (let i92 = arr1.length - 1; i92 >= 0; i92--) {
     console.log(arr1[i92]);
 }
 // //     3. перебрати циклом while та вивести  числа тільки з непарним індексом
 console.log(`Task 9.3`);
 i93 = arr1.length - 1;
-while (i93 > 0) {
+while (i93 >= 0) {
     if (i93 % 2 === 1) {
         console.log(arr1[i93]);
     }
@@ -81,7 +81,7 @@ while (i93 > 0) {
 }
 // // 4. перебрати циклом for та вивести  числа тільки з непарним індексом
 console.log(`Task 9.4`);
-for (let i94 = arr1.length - 1; i94 > 0; i94--) {
+for (let i94 = arr1.length - 1; i94 >= 0; i94--) {
     if (i94 % 2 === 1) {
         console.log(arr1[i94])
     }
@@ -89,7 +89,7 @@ for (let i94 = arr1.length - 1; i94 > 0; i94--) {
 // // 5. перебрати циклом while та вивести  числа тільки парні  значення
 console.log(`Task 9.5`);
 i95 = arr1.length - 1;
-while (i95 > 0) {
+while (i95 >= 0) {
     if (arr1[i95] % 2 === 0) {
         console.log(arr1[i95]);
     }
@@ -97,14 +97,14 @@ while (i95 > 0) {
 }
 // // 6. перебрати циклом for та вивести  числа тільки парні  значення
 console.log(`Task 9.6`);
-for (let i96 = arr1.length - 1; i96 > 0; i96--) {
+for (let i96 = arr1.length - 1; i96 >= 0; i96--) {
     if (arr1[i96] % 2 === 0) {
         console.log(arr1[i96]);
     }
 }
 // // 7. замінити кожне число кратне 3 на слово "okten"
 console.log(`Task 9.7`)
-for (let i97 = arr1.length-1; i97 >0; i97--) {
+for (let i97 = arr1.length-1; i97 >=0; i97--) {
     if (arr1[i97] % 3 === 0) {
         arr1[i97] = "okten";
     }
