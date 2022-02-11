@@ -10,7 +10,43 @@
 <body>
 <script>
 
+// let company = [
+//     {name: 'Petro', age: 32, status: true},
+//     {name: 'Roma', age: 23, status: false},
+//     {name: 'Marusyna', age:29, status: true}
+// ];
+// for (let user of company) {
+//     console.log(`<ul>`);
+//     for (let key in user) {
+//         document.write(`<li>${key} - ${user[key]}</li>`);
+//     }
+//     console.log(`</ul>`);
+// }
 
+// let users = [
+//     {surname: 'terminator', sex: 'man', age: 23, covid: true},
+//     {surname: 'tractor', sex: 'women', age: 25, covid: false},
+//     {surname: 'bus', sex: 'man', age: 45, covid: true}
+// ];
+// console.log(users[1].sex);
+//
+// for (let user of users) {
+//     document.write(`<ul>`);
+//     for (let key in user) {
+//         document.write(`${key + " "}`);
+//     }
+//     for (let key in user) {
+//         document.write(`<li>${key} - ${user.key}</li>`)
+//     }
+//     document.write(`</ul>`);
+// }
+
+function calc101(a, b) {
+    return a+b;
+}
+
+let calc = calc101(2, 3);
+console.log(calc);
     // function listCreator(a, b, c, d) {
     //     document.write(`<ul>`);
     //     document.write(`<li>${a}</li>`);
@@ -55,27 +91,32 @@
     // let res2 = calc2(10, 20, 30, 40, 50);
     // console.log(res1, res2);
 
+    // let nums = [23, 34, -12, 345];
+    // debugger;
+    // for (let i = 0; i < nums.length; i++) {
+    //     let currentNum = nums[1];
+    //     console.log(currentNum);
+    // }
 
 
-    function calculator(action, a, b) {
-        let result;
-        if (action === '+' && numberChecker(a, b)) {
-            result = a + b;
-        } else if (action === '-' && numberChecker(a, b)) {
-            result = a - b;
-        }
-
-        return result;
-    }
-
-    let calculatorResult1 = calculator('+', 10, 20); // 30
-    console.log(calculatorResult1);
-
-
-    function numberChecker(a, b) {
-        return typeof a === 'number' && typeof b === 'number';
-    }
-
+    // function calculator(action, a, b) {
+    //     let result;
+    //     if (action === '+' && numberChecker(a, b)) {
+    //         result = a + b;
+    //     } else if (action === '-' && numberChecker(a, b)) {
+    //         result = a - b;
+    //     }
+    //
+    //     return result;
+    // }
+    //
+    // let calculatorResult1 = calculator('+', 10, 20); // 30
+    // console.log(calculatorResult1);
+    //
+    //
+    // function numberChecker(a, b) {
+    //     return typeof a === 'number' && typeof b === 'number';
+    // }
 
 
 </script>
