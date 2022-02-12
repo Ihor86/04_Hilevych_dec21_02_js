@@ -50,28 +50,21 @@ console.log(ArrKeys1);
 // 4. Створити функцію яка приймає масив будь яких объектів, та повертає масив значень всіх обєктів
 // EXAMPLE: _ НЕ ЗРОБИВ, БО НЕ ЗМІГ ДОСТУПИТИСЬ ДО ЗНАЧЕНЬ КЛЮЧІВ
 //     [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]
-// console.log(`Task 4`)
-// let ArrKeys5 = [{name:'Vasya', status: true, price: 20}, {id: 2, surname: 'Ostapchuk'}, {number: 45, country: 'Ukraine'}];
-// // console.log(ArrKeys5[0].);
-//
-// function returnsValues (arr) {
-//     let ArrValues = [];
-//     // for (let item of arr) {
-//     for (i = 0; i < arr.length; i++) {
-//         for (const itemKey in arr[i]) {
-//             console.log(itemKey);
-//             console.log(arr[i].itemKey);
-//
-//
-//             // arr[i].itemKey.value(ArrValues.push);
-//             // ArrValues.push(...itemKey.);
-//             // console.log(`${itemKey}.value`);
-//             // ArrValues.push(`${arr[${i}]}.${itemKey}`);
-//             console.log(ArrValues);
-//         }
-//     }
-//     return ArrValues;
-//
-// }
-// let ArrValues1 = returnsValues([{name:'Vasya', status: true, price: 20}, {id: 2, surname: 'Ostapchuk'}, {number: 45, country: 'Ukraine'}]);
-// console.log(ArrValues1);
+console.log(`Task 4`)
+let ArrKeys5 = [{name:'Vasya', status: true, price: 20}, {id: 2, surname: 'Ostapchuk'}, {number: 45, country: 'Ukraine'}];
+// console.log(ArrKeys5[0].);
+
+function returnsValues (arr) {
+    let ArrValues = [];
+    // for (let item of arr) {
+    for (i = 0; i < arr.length; i++) {
+        for (const itemKey in arr[i]) {
+            // console.log(itemKey);
+            // console.log(arr[i][itemKey]);
+            ArrValues.push(arr[i][itemKey]);
+        }
+    }
+    return ArrValues;
+}
+let ArrValues1 = returnsValues([{name:'Vasya', status: true, price: 20}, {id: 2, surname: 'Ostapchuk'}, {number: 45, country: 'Ukraine'}]);
+console.log(ArrValues1);
