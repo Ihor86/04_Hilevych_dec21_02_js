@@ -10,6 +10,51 @@
 <body>
 <script>
 
+
+
+    // Завдання: побудувати певну кількість дівів
+    function divCreator(counter) {
+        for (let i=0; i<counter; i++) {
+            document.write(`<div>test</div>`); // той текст всередину дали, щоб просто було видно
+        }
+    }
+    divCreator(10);
+    //Завдання: зробити функцію, яка б сумувала чеки за проданий товар в магазині за день
+    debugger;
+    function summary (arrayChecks) {
+        let result = 0;
+        for (const check of arrayChecks) {
+            result = result + check;
+        }
+        return result;
+    }
+    let sum = summary([100, 200, 340, 239]);
+    console.log(sum);
+    function calculator(...igora) {
+        for (const igoraElement of igora) {
+            console.log(igoraElement);
+        }
+    }
+
+    calculator(23, 34, 2354325, 23423, 23423);
+
+    // зараз спробуємо зробити це саме, але через викликання однієї функції всередині іншої
+
+    function iteratorArray(arr) {
+        for (const item of arr) {
+            console.log(item);
+        }
+    }
+
+    function calculator(...igora) {
+        iteratorArray(igora);
+    }
+
+    calculator(23, 34, 2354325, 23423, 23423);
+
+
+
+
 // let company = [
 //     {name: 'Petro', age: 32, status: true},
 //     {name: 'Roma', age: 23, status: false},
