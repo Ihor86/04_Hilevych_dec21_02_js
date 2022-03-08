@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson 8</title>
+    <style>
+        .wrap {
+            display: flex;
+        }
+
+        .product {
+            width: 200px;
+            background: silver;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body><!-- ajsjhfkds-->
+
+
+<div class="wrap">
+    <div class="product">
+        <h2>product title 1</h2>
+        <p>Lorem ipsum.</p>
+    </div>
+
+    <div class="product" id="xxx">
+        <h2>product title 2</h2>
+        <p>Lorem ipsum dolor.</p>
+    </div>
+</div>
+
+<!--<form action="ewrwer" name="form1">-->
+<!--&lt;!&ndash;    action - дозволяє відправити нас, чи зробити запит на певну стоірнку... стоірнка, на яку потрібно перейти, або ж обробник, який має опрацювати цю сторінку&ndash;&gt;-->
+<!--    <input type="text" name="username" placeholder="enter name">-->
+<!--&lt;!&ndash;    name - обовязково, placeholder - це підказка, що мовляв треба ввести&ndash;&gt;-->
+<!--    <input type="password" name="password" placeholder="enter password">-->
+<!--    <div>-->
+<!--&lt;!&ndash;        // обгортка для двох radio, щоб вони працювали як виключательююю radio мають мати однакові назви&ndash;&gt;-->
+<!--        <label >-->
+<!--&lt;!&ndash;            // атоматично має бути атрибут for="", але можна його забирати... обгортка для male/female, які ми можемо вписати всереині цього тегу і це фактично буде напис на сторінці&ndash;&gt;-->
+<!--            male-->
+<!--            <input type="radio" name="gender" value="man">-->
+<!--&lt;!&ndash;            // value - вказуєтсья наперед і ми просто вибираємо той чи інший батон&ndash;&gt;-->
+<!--        </label>-->
+<!--        <label>-->
+<!--            female-->
+<!--            <input type="radio" name="gender" value="woman">-->
+<!--        </label>-->
+<!--    </div>-->
+<!--    <label>-->
+<!--        <input type="checkbox" name="status">-->
+<!--&lt;!&ndash;        якщо ми статус чекнули (поставили галочку), то йе означає, що це буде тру і воно пускає далі.// нечекнуто- то фолс &ndash;&gt;-->
+<!--    </label>-->
+<!--    <button>save</button>-->
+<!--</form>-->
+
+<!--РЕКУРСІЯ-->
+<!--потрібно знайти та зібрати в один масив всі елементи,я кі є в BODY-->
+<!--при цьому їх перебрати: елементи з класами попакувати в один масив, а з ідентифікаторами - в інший-->
+<!--<div class="a">-->
+<!--    <p class="b">-->
+<!--        <a href="" id="x">Lorem ipsum.</a>-->
+<!--    </p>-->
+<!--    <p class="b"><a href="" id="y">Lorem ipsum dolar</a></p>-->
+<!--</div>-->
+
+
+<script>
+    // console.log(document);
+
+
+    //     <!--РЕКУРСІЯ-->
+    // document.getElementsByTagName(`a`); // так ми би взяли певний масив
+    // document.getElementsByTagName(`a`)[0]; // так ми би взяли перший елемент цього масиву
+    // let a1 = document.getElementsByTagName(`a`)[0];
+    //     console.log(a1);
+    //     // тепер вже звертаючись до цього елемента можемо виводити його різні атрибути...
+    //     console.log(a1.id); // якщо в елемента нема ID, то не повнерне нічого - ``
+    //     // інший спосіб ортмати той самий атрибут за допомогою спцеіальної Ф:
+    //         console.log(a1.getAttribute('id'));
+    //     // при цьому,якби він не мав ІД, то нам виведе null. ЦЕ важлива відмінність від попереднього
+
+
+    //     тільки тепер нарешті переходимо до РЕКУРСІЇ.
+    //         В нас є функція, яку ми потенційно повинні застосвувати до кожного елемениа в нашому документі або ж навіть до любого let документа;
+    // куди б ми її не пристосували, вона повинна показати!!! ВОна буде називатися скрапер і у якості атрибута матиме стартовий елемент, від якого будемо починати.
+    //     це може бути BODY або ж конкретна дівка
+    // наші дії:
+    //     1) просто виводимо; 2) взяти його дочірні елементи,я кшо вон існують, та проітерувати і просто вивести.
+    //         ТОбто основне завдання цієї Ф - просто виести в консольку всі елементи, які є в нашому документі
+
+    //     function scraper(startElement) {
+    //         console.log(startElement);
+    //         let children = startElement.children; // створюємо масив з чілдренів стартогвого елемента, щоб надалі їх проітерувати
+    //         for (const child of children) {
+    //             scraper(child);
+    //             // насправді тут скрапер викликається вже з цим елементом і йде максимально в глибину
+    //             // і лише тоді йде до наступної дитини на всіх рівнях вкладеності. Дає можливість пірнути в глибину всіх елементів!!!
+    //         }
+    // // умови завершенян Ф не потрібно, бо в певний момент просто завершаться елементи
+    //         //тобто написали кілька рядків коду, які дозволил нам вивести всі теги з коду, а потім їх вже можна використовувати через різні селектори
+    //     }
+    //
+    //     scraper(document.body); // виклик цієї функції
+
+    //     // ФОРМИ
+    //     console.log(document.getElementsByTagName(`form`)); // щоб знайти та доступитися до нашої форми_виводитт ШТМЛ-колекцію
+    // // або зручніше
+    //     let form1 = document.getElementsByTagName(`form`);
+    //     console.log(form1);
+    //     console.log(form1[0].name); // доступитися до першого інпута в наших формах... вертає значення його атрибута НЕЙМ
+    //
+    //     // в новіших версіях є більш зручні маніпулятори, які дають можливість швидше та зручніше доступитися до тих форм
+    // // formsAPI
+    //     console.log(document.forms); // незалежно від кількості форм на стоірнці, воно поверне пачку всіх форм в штмл-клдекції!!!
+    // щоб  через такий механізм доступитися до конкретної форми
+    //     console.log(document.forms.form1); - вертає першу форму, де 'form1' - це name того тегу
+    //
+    //     console.log(document.forms.form1.username);
+    //     console.log(document.forms.form1.password);
+    //     console.log(document.forms.form1.gender); // це якщо хочемо доступитися до поля ЮЗЕРНЕЙМ нашої другої фроми.. Найзручніший запис
+
+
+    // DOM
+    // console.log(document);
+    // console.log(document.head); // від імені документа можемо звертатись до хеда та боді, які є унікальними елементами
+    // в штмл-документі
+    // // bytag,
+    // let metaList = document.head.getElementsByTagName('meta');
+    // // console.log(metaList);
+    // for (const metaListElement of metaList) {
+    //     console.log('-------start---------')
+    //     // console.log(metaListElement);
+    //     let attributes = metaListElement.attributes; || створили змінну "атрибути"
+    //     // console.log(attributes);
+    //     for (const attribute of attributes) { // ітеруємо ці атрибути елементу з штмл-колекції metaList
+    //         console.log(attribute, attribute.value);
+    //     }
+    //     console.log('-------end---------')
+    // }
+
+// МІЙ 1
+//     let metaList = document.head.getElementsByTagName(`meta`);
+//     console.log(metaList);
+//     for (const metaListElement of metaList) {
+//         console.log(metaListElement);
+//         let attributes = metaListElement.attributes;
+//         for (const attribute of attributes ) {
+//             console.log(attribute, attribute.value);
+//         }
+//     }
+//     // МІЙ 2
+// let metaList = document.head.getElementsByTagName(`meta`);
+// for (const metaListElement of metaList) {
+//     console.log(metaListElement);
+//     let attributes = metaListElement.attributes;
+//     for (const attribute of attributes) {
+//         console.log(attribute, attribute.value);
+//     }
+// }
+    //     // МІЙ 3
+// let divList = document.body.getElementsByTagName(`div`);
+// for (const divListElement of divList) {
+//     console.log(divListElement);
+//     let attributes = divListElement.attributes;
+//     for (const attribute of attributes) {
+//         console.log(attribute, attribute.value);
+//     }
+// }
+    //     // МІЙ 4
+// let metaList = document.head.getElementsByTagName(`meta`);
+// for (const metaListElement of metaList) {
+//     console.log(metaListElement);
+//     let attributes = metaListElement.attributes;
+//     for (const attribute of attributes) {
+//         console.log(attribute, attribute.value);
+//     }
+// }
+    //     // МІЙ 5
+// let divList = document.body.getElementsByTagName(`div`);
+//     console.log(divList);
+//     for (const divListElement of divList) {
+//     let attributes = divListElement.attributes;
+//     for (const attribute of attributes) {
+//         console.log(attribute, attribute.value);
+//     }
+// }
+
+
+    // МІЙ:
+    // let metaList = document.head.getElementsByTagName(`meta`); //якщо хочемо щось вибрати і створити масив, то викор. методи
+    // for (const metaListElement of metaList) {
+    //     console.log(metaListElement);
+    //     let attributes = metaListElement.attributes; //щоб доступитися до певної властивості, пишемо її через
+    //     крапку після назви тегу чи змінної
+    //     for (let attribute of attributes) {
+    //         console.log(attribute, attribute.value);
+    //     }
+    // }
+
+    // let titles = document.head.getElementsByTagName('title'); // незалежно від кількості знайдених елементів
+    // (навіть коли він 1 - унікальний) - цей метод завжди повертає пачку (псевдомасив)
+    // console.log(titles);
+
+    // console.log(document.head.children); // отримавши будь який елемент на сторінці, можна попросити його віддати
+    // свої чілдрени |все , що є всередині нього| - вертає теж ШТМЛ-колекцію
+    // через крапку тут можна писати лише назви тегів, поняття чілдрен, але не можна назву класів (так неправильно: document.body.wrap)!!!
+    // натомість щоб шукати по класах викор. лише метод getElementsByClassName... метод вертає нам штмл-колекцію і ми
+    // можемо її проітерувати, тобто вивести інфу про всіх її членів
+    //     byclass,
+    // classlist
+    // search in current element
+    // children,
+    // console.log(document.body.getElementsByClassName('product'));
+    // let products = document.getElementsByClassName('product');
+    // // console.log(products);
+    // for (const productDiv of products) {
+    //     // console.log(productDiv);
+    //     // productDiv.classList.add('x'); тобто цілому масиву (штмл-колекції) за допомогою Ф.add ми додаємо новий клас... і воно реально додає ці класи в хаарктеристики відповідних тегів ШТМЛ
+    //     // productDiv.classList.add('y');
+    //     // productDiv.classList.remove('x'); // метод remove дає можливість видалити класи в елементів цієї колекції
+    //     // console.log(productDiv.classList.contains('y')); - дозволяє прийняти аргумент, який буде повертати нам тру
+    //     //або фолс, тобто чи контейнить воно зараз клас "y".
+    //     // console.log(productDiv.classList.keys()); - поверне ітеруємий масив з назвами класів.
+
+
+//     // МІЙ КОД
+// let productsDiv = document.getElementsByClassName(`product`);
+// for (const elementproductsDiv of productsDiv) {
+//     console.log(`new itteration`);
+//     elementproductsDiv.classList.add(`colour_red`);
+//     elementproductsDiv.classList.add(`xxx`);
+//     console.log(elementproductsDiv.classList.contains(`colour_red`));
+// }
+
+
+    //     productDiv.style.background = 'gray'; || можемо навіть змінювати стилі (тобто приступитися до властивості STYLE),
+    //     цей метод кожному ЕЛ з кл. додає вбудований стиль у властивість style з певним значенням.
+    //     ЦЕ КОСТИЛЬ, ЯКИЙ важко перебити чимось.. ЦЕ ЧАСТИЙ ПІДХІД, АЛЕ ВІН Є НЕВІРНИЙ, бо ним потім важко маніпулювати
+    //     - тобто це АНТИПАТЕРн
+    // }
+    //
+    // let h1OfBlock1 = products[0].children[0]; // доступитися до дітей однієї з дівок
+    // console.log(h1OfBlock1);
+    // // h1OfBlock1.innerText = 'hello'; // перезапише текст всередині тегу
+    // // h1OfBlock1.innerText = '<i>hello</i>'; // вибє помилку, бо іннерТекст приймає лише текст без додаткової стилізації тегами (тут італік)
+    // h1OfBlock1.innerHTML = '<i>hello</i>'; - пропустить, бо тут вже іннер-штмл,я кий стосується всіх дочірніх елементів
+
+
+    // node / element
+    // console.log(document.body.children); // html elements
+    // console.log(document.body.childNodes); // node - hE text comment _ дитячі вузли - всього є 12 типів, в т.ч. штмл-елемент, пробіли, коментарі,
+    // пробіл - це символ, а симовл - це текст, тому в нодах показує порбіл як "text"
+    // в штмл - браузер незалежно від кількості пробілів приймає їх як 1 - як вузол "text"
+    //     id,
+    // let byId = document.getElementById('xxx'); // html element 1<--- // вернийться 1 єдини елемент
+    // console.log(byId);
+    // querySelector - кверіселектор - він дозволяє за допомогою звичайних синтаксисчних конструкцій CSS сказати
+    // що ви хочете звернутися до певного едемента з класом. ТОБТО КВЕРІСЕЛЕКТОР потрібен лише для того, щоб тут могти прописати ЦСС-синтаксисом
+    // let queryList = document.querySelector('body > .wrap > .product'); // показує лише 1-й елемент,я кий воно зустріне_обєкт
+    // let queryList = document.querySelectorAll('body > .wrap > .product'); // вертає Nodelist - Тобто  список вузли  - на відміну від попереднього, який
+    // вертав штмл-колекцію... в НОДЕ може не бути певних методів,я кі потенційно є в штмл-елементів
+    // console.log(queryList);
+    // let xxxList = document.querySelectorAll('#xxx'); // знаходить всі елементи, навіть якщо вони мали б бути унікальними
+    // (тобто коли хтось помилково присвоїв двом тегам однакові ІД, то воно виведи в НОДЛІСТ обидва)
+    // він важчий ніж цикли та гетбайтег, нейм... ін., бо кваріаселектор проаняє список кілька разів - зайве навантаження
+    // console.log(xxxList);
+
+    // formsAPI
+
+
+</script>
+</body>
+</html>
