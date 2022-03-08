@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // **001*
+    // ЗАМИКАННЯ!!!! –
+    // var.1_початковий
+    function usersDatabase() {
+        let users = [
+            {name: 'vasya', age: 31, status: false},
+            {name: 'petya', age: 30, status: true},
+            {name: 'vasya', age: 31, status: false},
+            {name: 'petya', age: 30, status: true},
+            {name: 'kolya', age: 29, status: true},
+            {name: 'olya', age: 28, status: false},
+            {name: 'max', age: 30, status: true},
+            {name: 'anya', age: 31, status: false},
+            {name: 'oleg', age: 28, status: false},
+            {name: 'andrey', age: 29, status: true},
+            {name: 'masha', age: 30, status: true},
+            {name: 'olya', age: 31, status: false},
+            {name: 'max', age: 31, status: true},
+        ];
+        return {
+            addUser: function (user) {
+                if (user.name && user.age && (user.status || !user.status) && (user.length === 3)) {
+                    users.push(user);
+                    console.log(`user was add`);
+                } else {
+                    console.log(`eror... this object hasn't some field or it has more than three fields`);
+                }
+            },
+            getUsersState: function () {
+                console.log(users);
+            },
+            // getUserOlderThan30: () => users.filter(user => user.age > 30),
+            // getUserYangerThan31: () => users.filter(user => user.age < 31),
+            getUserYanger: function (ageForFilterYanger) { //не зміг переробити, щоб приймати від користувача вік для
+                // фільтра - через промпт чи при виклику функції
+                let ageYanger = ageForFilterYanger;
+                console.log(typeof ageYanger);
+
+                // let ageForFilterOlder = prompt(`Filter users yanger than ... years`);
+                console.log(users.filter(user => (user.age < ageYanger)));
+            },
+            getUserOlder: function () {
+                let ageOlder = prompt(`Filter users older than ... years`);
+                console.log(users.filter(user => user.age > ageOlder));
+            },
+            getUserStatusTrue: () => users.filter(user => user.status),
+            getUserStatusFalse: () => users.filter(user => !user.status),
+            getUserStatus: (arg) => users.filter(user => user.status === arg),
+            sortUsersByAge: () => users.sort((a, b) => a.age - b.age),
+
+            sortUsersByAge2: (direction) => { //трохи глючно сортує за рахунок того, що є по кілька елементів з однаковими значеннями, Пробував зробити через цикл, але не вийшло
+                    if (direction === `ascending`) {
+                        users.sort((a, b) => a - b);
+                    } else if (direction === `descending`) {
+                        users.sort((a, b) => b - a);
+                    }
+                    return users;
+                }
+            }
+            // for (let i = 0, xxx = [], xxx${`i`} = []; i <= users.length; i++) {
+            //         xxx = users;
+            //         console.log(xxx);
+            //         if (direction === `ascending`) {
+            //             xxx.sort((a, b) => a - b);
+            //         } else if (direction === `descending`) {
+            //             xxx.sort((a, b) => b - a);
+            //
+            //         }
+            //
+            //         let users+${`i`} [] = users;
+            //         console.log(users);
+            //     }
+            // }
+    }
+
+    let m = usersDatabase(); // якщо пробуємо додати пустий обєкт, то вибиває помилку
+    // тепер пробуємо додати цій змінній обєкт з потрібними полями
+    m.addUser({name: `kokos`}); //і воно додає цього юзера до масиву
+    m.addUser({name: `Onufrii`, age: 35, status: true});
+    m.addUser({name: `Ohrim`, age: 42, status: false});
+    m.addUser({name: `Onopriyenko`, age: 48, status: false, hobby: `chess`});
+    m.addUser({age: 33, status: true});
+    m.addUser({name: `Mykola`, status: false});
+    console.log(m);
+    // console.log(m.getUserOlderThan30());
+    // console.log(m.getUserYangerThan31());
+    // console.log(m.getUserYanger(31));
+    m.getUserYanger(29); // вік вказуємо при виклику
+    m.getUserOlder(); // вік вказуємо через prompt
+    console.log(m.getUserStatusTrue());
+    console.log(m.getUserStatusFalse());
+    console.log(m.getUserStatus(true));
+    console.log(m.getUserStatus(false));
+    console.log(m.sortUsersByAge());
+    console.log(m.sortUsersByAge2(`descending`));
+
+
+    // його код остаточний
+    // function usersDatabase() {
+    //     let users = [
+    //         {name: 'vasya', age: 31, status: false},
+    //         {name: 'petya', age: 30, status: true},
+    //         {name: 'kolya', age: 29, status: true},
+    //         {name: 'olya', age: 28, status: false},
+    //         {name: 'max', age: 30, status: true},
+    //         {name: 'anya', age: 31, status: false},
+    //         {name: 'oleg', age: 28, status: false},
+    //         {name: 'andrey', age: 29, status: true},
+    //         {name: 'masha', age: 30, status: true},
+    //         {name: 'olya', age: 31, status: false},
+    //         {name: 'max', age: 31, status: true},
+    //     ];
+    //     return {
+    //         addUser: function (user) {
+    //             console.log(user);
+    //             if (user.name) {
+    //                 users.push(user);
+    //                 console.log('user was add');
+    //             } else {
+    //                 console.log('erorororo no name');
+    //             }
+    //         },
+    //         getUsersState: function () {
+    //             console.log(users);
+    //         },
+    //         getStatusTrue: () => users.filter(u => u.status),
+    //         getUsersByAgeGT: (ageGT) => users.filter(u => u.age > 30)
+    //         // GTbyDynamicAge
+    //         // sort by age asc dec sortedUsers(asc|| desc)
+    //         // getBystatus(true|false)
+    //     };
+    // }
+    //
+    // let m = usersDatabase(); //{addUser: function (user) {if (user.name) {users.push(user);}
+    // console.log(m);
+    // m.addUser({name: 'kokos'});
+    // m.getUsersState();
+    // console.log(m.getStatusTrue());
+    // console.log(m.getUsersAgeGT30());
+
+    // let users = [
+    //     {name: 'vasya', age: 31, status: false},
+    //     {name: 'petya', age: 30, status: true},
+    //     {name: 'kolya', age: 29, status: true},
+    //     {name: 'olya', age: 28, status: false},
+    //     {name: 'max', age: 30, status: true},
+    //     {name: 'anya', age: 31, status: false},
+    //     {name: 'oleg', age: 28, status: false},
+    //     {name: 'andrey', age: 29, status: true},
+    //     {name: 'masha', age: 30, status: true},
+    //     {name: 'olya', age: 31, status: false},
+    //     {name: 'max', age: 31, status: true}
+    // ];
+    //
+    // let connection = fire({username: `asdas`, password: `yuryuyu`});
+    // connection.save({});
+    // connection.remove({});
+    //
+
+
+    // callback
+    // Array.prototype.myForeach = function (callback) {
+    //     for (const item of this) {
+    //         callback(item);
+    //     }
+    // }
+    // users.myForeach(function (u) {
+    //     console.log('this is user of current iteration', u);
+    // });
+
+
+    // class Car {
+    //
+    //     constructor(model) {
+    //         this.model = model;
+    //     }
+    // }
+    //
+    // class UserComposition {
+    //
+    //     constructor(name, car) {
+    //         this.name = name;
+    //         this.car = car;
+    //     }
+    // }
+    //
+    // let car = new Car("porsche");
+    // let userComposition = new UserComposition('vasya', car);
+    //
+    //
+    // class UserArgegation {
+    //
+    //     constructor(name, model) {
+    //         this.name = name;
+    //         this.car = new Car(model);
+    //     }
+    // }
+    //
+    // let userArgegation = new UserArgegation('vasyta', 'porsche');
+
+</script>
+</body>
+</html>
