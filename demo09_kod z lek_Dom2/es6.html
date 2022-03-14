@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+// деструктуризація_в екма-скрипт-6_тобто коли потрібно розкласти в окремі змінні поля обєкта
+    // vanila js_ це так би робили по старому
+    // let user = {name: 'vaysa', age: 31, status: true, id: 1};
+    // let id = user.id;
+    // let name = user.name;
+    // let age = user.age;
+    // let status = user.status;
+
+    // super duper modern_ЦЕ ТЕПЕР ТАК РОБЛЯТЬ ПО НОВОМУ
+    // let {id, name, age, wife, wife: {imya}} = {name: 'vaysa', age: 31, status: true, id: 1, wife: {imya: 'olya'}};
+// то ці зліва як новостворенні змінні??? при цьому порядок та наявність всіх змінних не важливі
+// якщо б в ОЛі було теж name, то потрібно було б писати через псевдонім: там в переліку {id, name, age, wife, wife: {name:wifeName}} тут через дві крапки йде імя та псевдоім замість нього console.log(wifeName)
+    // console.log(id);
+    // console.log(name); // vaysa
+    // console.log(wife);
+    // console.log(imya) // olya
+// якщо б ми зліва вказали якесь поле, якого в обєкта не існує, то згодом при спробі вивести цієї змінної нам покаже - underfind
+
+
+
+// це було б по-старому
+// function asdqwewe(user) {
+//     console.log(user.name, user.age);
+// }
+// asdqwewe(user); //виклик
+
+
+
+    // function asdqwe(user) {
+    //     let {name, age} = user; //в наступному варіанті цей рядок скорочений
+    //     console.log(name, age);
+    //  }
+    //
+// має прийти О, але з його 25 характеристик нам реально потрібні напр. лише дві, тож ми відразу в аргументі можемо це прописати
+    // function asdqwe({name, age}) { //тобто ми деструктуровуємо наш обєкт недочікуючись його... при виклику ми вказуємо весь обєкт, а тут воно відразу бере лише потрібні поля
+    //     console.log(name, age);
+    // }
+    //
+    // let u = {name: 'vaysa', age: 31, status: true, id: 1, wife: {imya: 'olya'}};
+    // asdqwe(u);
+
+
+
+// про масиви_те саме
+    // let numbers = [11, 22, 33];
+    // num1 = numbers[0];
+    // num2 = numbers[1];
+    // num3 = numbers[2];
+
+    // let [num1, num2, num3] = [11, 22, 33]; // оголосили три змінні - це деструктуризація масиву
+    // console.log(num1,num2, num3);
+
+    // let [num1, , num3] = [11, 22, 33]; // тут  num2 - пішло як пусте значення... такий код працює... вивело 11 та 33
+    // console.log(num1, num3);
+//якщо з зліва вкажемо більше змінних, ніж є алементи масиву, то соатннє буде underfind
+
+    // let users = [
+    //     {name: 'vasya', age: 31, status: false},
+    //     {name: 'petya', age: 30, status: true},
+    //     {name: 'kolya', age: 29, status: true},
+    //     {name: 'olya', age: 28, status: false},
+    //     {name: 'max', age: 30, status: true},
+    //     {name: 'anya', age: 31, status: false},
+    //     {name: 'oleg', age: 28, status: false},
+    //     {name: 'andrey', age: 29, status: true},
+    //     {name: 'masha', age: 30, status: true},
+    //     {name: 'olya', age: 31, status: false},
+    //     {name: 'max', age: 31, status: true}
+    // ];
+    //
+    // let users2 = users; || це просто обгортка, бо це ссилочні типи даних
+    // let users2 = [...users]; || а це вже ОПЕРАТОР СПРЕД (ці три крапки, означають, що там буде енна к-сть юзерів - ТОБТО МИ ЇХ ТУТ РОЗКЛАДАЄМО, ДЕСТРУКТУРУЄМО МАСИВ НА СКЛАДОВІ ЧАСТИНИ) - реальне КОПІЮВАННЯ МАСИВУ - надалі вони не повязані між собою!!!
+    // послідовність юзерів зберігається
+
+
+    // function foobar(...item) { || це теж ОПЕРАТОР СПРЕД
+    // }
+    //
+    // foobar(...users) !!!! - воно скопіювало само сюди всю пачку юзерів; тобто foobar({}, {}, {}, {}); - це виклик тої Ф з багатьма обєктами
+    //
+    // let nums = [1, 2, 3,...users];
+    // console.log(nums);
+
+// ЦЕ БУДЕ В РЕАКТІ, ТОМУ ПОТРІБНО ЗАЗУБРИТИ!!! - для свапання (заміни елементів)
+
+</script>
+
+</body>
+</html>

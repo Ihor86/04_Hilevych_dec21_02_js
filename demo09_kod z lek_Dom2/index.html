@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="target"></div>
+<div class="point1"></div>
+<div class="point2"></div>
+
+<script>
+
+     DOM part2
+    create /  append
+
+     let h2 = document.createElement('h2'); // він створений, але його в коді ШТМЛ не показує, бо його ще потрібно кудись запхати з привязкою до наявних в штмл-структурі елелментів
+     для цього можна використати два функції : append (через кому можемо одночасно додати кілька елементів) та appendChild (спроможна приянйти лише 1 елемент)
+ let h3_1 = document.createElement(`h3`);
+ let h3_2 = document.createElement(`h3`);
+ document.append(h3_1, h3_2); // тепер їх можна побачити в консольці в закладці "Elements"
+     document.appendChild(h3_1); // через цей метод можна покласти лише 1 елемент
+     реально руцями цього юзати не будемо, це потрібно лише для розуміння як працюють в Ангуларі, Реакті, Вуджеесі апендструктури нашої
+
+
+     h2.innerText = 'lesson 9 DOM part2'; // так додаємо текст всередину створеного нами елемента (вказуючи назву ЕЛЕМЕНТА)
+     let cloneNodeH2 = h2.cloneNode; // клонуємо ДОМ-ВУЗЛИ (тобто створюємо ідентичний екземпляр) без внутрішнього змісту!!!
+     між собою клоновані елементи надалі незалежні!!!... обєкти клонуються по-іншому
+     _за зммовчуванням там після нього є дужки - h2.cloneNode(false);, в яких вказано false -тобто не копіювати внутрянки_
+     let cloneNodeH2 = h2.cloneNode(true); // клонуємо з внутрішнім змістом!!! цей паарметр називається deep - глибина
+     document.body.append(h2); // h2 запихнули в БОДІ... якщо ми його потім заапендимо в якусь дівку, то тут він пропаде,
+     бо ми його ніби вже переносимо, а не копіюємо... це ярличок - в два місця той самий ярдичок додати не можна
+
+     let targets = document.getElementsByClassName('target'); // [вертає html-колекцію, з якої надалі обираємо 1-й ел]
+     let target = targets[0];
+
+     target.append(cloneNodeH2);
+
+
+
+
+
+    створюємо табличку
+
+     let wrap = document.createElement('div'); // div - створюємо елемент даючи йому назву!!! і вказуючи назву тегу,
+     а сам метод завжди однаковий від імені докмуента
+     wrap.classList.add('wrap'); // div class=wrap
+
+     let outer = document.createElement('div');
+     outer.classList.add('outer');
+
+     let box1 = document.createElement('div');
+     // box1.setAttribute('class', 'inner'); // class inner - додаємо дівці атрибут клас зі значенням іннер
+     // box1.setAttribute('class', box1.getAttribute('class') + ' box-1'); // class = inner box-1... витягуємо існуюче значення атрибуту "клас" додаємо до нього ще один клас і повертаємо разом
+     box1.classList.add('inner'); //так на багато зручніше
+     box1.classList.add('box-1');
+
+
+     let box2 = document.createElement('div');
+     box2.classList.add('inner');
+     box2.classList.add('box-2');
+
+     тепер склаадємо створені дівки в матрьошку - послідовність немає значення, але краще від глибини
+     wrap.appendChild(outer); // тут закидаємо лише 1, то краще викор. appendChild - мовляв менше механізмів та легше
+     outer.append(box1, box2);
+     document.body.append(wrap); // додає після всіх існуєчих на цей момент тегів всередині БОДІ
+
+
+     next/previous sibling /  sibling element
+     let point1 = document.getElementsByClassName('point1')[0];
+     console.log(point1.nextElementSibling); - наступний елемент сусід /того самого рівня вкладеності/
+     console.log(point1.previousElementSibling); // взяти попередній елемент
+     console.log(point1.parentElement); //можемо дізнатися, хто є батьківським елементом певного тега
+
+     a href
+     let anchorElement = document.createElement('a'); // a href='https://owu.com.ua'
+     anchorElement.href = 'https://owu.com.ua'; //додаємо атрибут href!!!! так само додається атрибут src для img
+     anchorElement.innerText = 'site';
+     document.body.append(anchorElement);
+
+
+
+
+    // Динамическое построение структуры из массива объектов
+    // spred/rest
+
+</script>
+</body>
+</html>
