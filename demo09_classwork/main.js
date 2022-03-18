@@ -181,7 +181,6 @@ function coursesIterator(coursesList) {
     document.body.appendChild(divCourses);
     for (const element of coursesList) {
         let divCourse = document.createElement(`div`);
-        // divCourse.classList.add(`courseContainer`);
         divCourses.appendChild(divCourse);
 
         let divTitle = document.createElement(`div`);
@@ -198,7 +197,7 @@ function coursesIterator(coursesList) {
 
         let divHourDuration = document.createElement(`div`);
         let h3_2 = document.createElement(`h3`);
-        h3_2.innerText = `Hour duration ${element.hourDuration}`;
+        h3_2.innerText = `Hour duration: ${element.hourDuration}`;
         divHourDuration.appendChild(h3_2);
 
         let divModules = document.createElement(`div`);
@@ -212,7 +211,6 @@ function coursesIterator(coursesList) {
         divModules.appendChild(ulModules);
         divCourse.append(divTitle, divMonthDuration, divHourDuration, divModules);
     }
-    // console.log(divCourse);
 }
 
 coursesIterator(coursesArray);
