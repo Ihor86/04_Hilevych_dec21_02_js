@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 10</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .target {
+            width: 200px;
+            height: 200px;
+            background: silver;
+        }
+    </style>
+</head>
+<body>
+<!--<button onclick="(function (){-->
+<!--    alert('oooohhh');-->
+<!--}())">click me</button>-->
+
+
+<h1 id="title"></h1>
+<button id="btn1"> click me</button>
+
+
+<script>
+
+
+    // clicck...eventlistener
+    let btn1 = document.getElementById('btn1'); // dom html element_варю1
+
+    // btn1.onclick = function () {
+    //     console.log('you click me');
+    // };
+    // btn1.onclick = function () {
+    //     console.log('you click me another way');
+    // };
+    // console.log(btn1);
+
+    // btn1.addEventListener('click', function () { // вар.2_через спеціальний метод івент-лісенер
+    //     console.log('click1');
+    // });
+
+
+    // btn1.addEventListener('click', function (e) {
+    //     console.log('click2'); //якщо в лапках, то воно виводиься як стрінга - тобто текст
+    //     console.log(e); //виводить досладний опис всіх властивостей цього обєкта
+    //     console.log(e.target); //виводить в консоль О/змінну від імені якої викликали Ф // btn1
+    // });
+    // btn1.addEventListener('mousemove', function (e) { // спрацьовує під час руху мишки по певному елементу - кнопці, дівці
+    //     console.log('click2'); //якщо в лапках, то воно виводиься як стрінга - тобто текст
+    //     console.log(e); //виводить досладний опис всіх властивостей цього обєкта
+    //     console.log(e.target); //виводить в консоль О/змінну від імені якої викликали Ф // btn1
+    // });
+
+
+    // let title = document.getElementById('title');
+    // document.onmousemove = function (e) {
+    //     title.innerText = `x = ${e.clientX}; y = ${e.clientY}`; //шукаємо розташування курсора в певний момент часу
+    // };
+    // clientX - властивість обєкта е, яка якраз і показує по вісі Х де знаходився курсор і т.д. це дозволяє в реальному
+    // часі водити по екрану курсором і на екрані постійно змінєю цифри мого розташування по кредитах X та Y
+
+
+
+    // маємо пустий масив і маємо Ф, яка при кожному кліку буде пушити в нього обєкт зі значеннями X та У, які беремо з місця кліку на екрану
+    let points = [];
+    document.onclick = function (e) {
+        points.push({x: e.clientX, y: e.clientY});
+
+    };
+    btn1.addEventListener('click', () => {
+        console.log(points);     // а при натисканні на батон - ця інфа буде виводитися
+    });
+// на основі цієї інфи можна будувати кольорові блоки і показати, куди саме на браузерному вікні клієнт клікав - виходить теплова карта
+
+
+
+    // object taget
+
+    // preventDefault
+
+    // forms+events
+    // filter by...
+    // regexp
+</script>
+</body>
+</html>
