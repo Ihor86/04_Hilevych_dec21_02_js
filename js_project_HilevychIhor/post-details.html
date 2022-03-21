@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Post details</title>
+    <style>
+        .post {
+            background: #8bed64;
+        }
+
+        .comments {
+            display: flex;
+            flex-wrap: wrap;
+            background: #6964e2;
+        }
+
+        .comments > li {
+            width: 100px;
+            background: #ffb44a;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Post details page</h1>
+<div class="post"></div>
+
+<ol class="comments"></ol>
+<script>
+
+    let url = new URL(location.href);
+    let post = JSON.parse(url.searchParams.get('data'));
+    // console.log(post);
+    let {postId, id, name, email, body} = JSON.parse(url.searchParams.get('data'));
+    let olInfoPost = document.createElement(`ol`);
+    let сontainerForPost = document.getElementsByClassName('post')[0];
+    // сontainerForPost.innerText = JSON.stringify(post);
+    сontainerForPost.appendChild(olInfoPost);
+
+    let postIdLi = document.createElement(`li`);
+    postIdLi.innerText = `postId - ` + postId;
+    let idLi = document.createElement(`li`);
+    idLi.innerText = `id - ` + id;
+    let postNameLi = document.createElement(`li`);
+    postIdLi.innerText = `name - ` + name;
+    let emailLi = document.createElement(`li`);
+    postIdLi.innerText = `email - ` + email;
+    let bodyLi = document.createElement(`li`);
+    postIdLi.innerText = `body - ` + body;
+    olInfoPost.append(postIdLi, idLi, postNameLi, emailLi, bodyLi);
+
+    let containerForComments = document.getElementsByClassName('comments')[0];
+    fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
+        .then(value => value.json())
+        .then(value => {
+            for (const commentItem of value) {
+                let containerForComment = document.createElement('li');
+                containerForComment.innerText = commentItem.body;
+
+                containerForComments.appendChild(containerForComment);
+            }
+        });
+
+
+</script>
+
+</body>
+</html>
