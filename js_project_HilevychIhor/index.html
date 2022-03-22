@@ -27,7 +27,6 @@
     }
     .btnForUser {
       background: yellow;
-
     }
   </style>
 
@@ -36,7 +35,7 @@
 
 <div class="users"></div>
 
-<script src="main.js">
+<script>
   let usersContainer = document.getElementsByClassName(`users`)[0];
   fetch(`https://jsonplaceholder.typicode.com/users`)
           .then(value => value.json())
@@ -47,13 +46,21 @@
 
               let btnUser = document.createElement(`button`);
               btnUser.classList.add(`btnForUser`);
+              userContainer.appendChild(btnUser);
               btnUser.innerText = `${userItem.id}, ${userItem.name}`;
               btnUser.onclick = function () {
-                // window.open(`./user-details.html?data=${JSON.stringify(userItem)}`);
-                `./user-details.html?data=${JSON.stringify(userItem)}`;
-                location.href="./user-details.html?data=${JSON.stringify(userItem)}";
-              }
-              userContainer.appendChild(btnUser);
+              //   // window.open(`./user-details.html?data=${JSON.stringify(userItem)}`);
+              //   // `./user-details.html?data=${JSON.stringify(userItem)}`;
+                location.href=`./user-details.html?data=${JSON.stringify(userItem)}`;
+              //   // btnUser.href="./user-details.html?data=${JSON.stringify(userItem)}";
+            }
+            //     let anchor = document.createElement('a');
+            //     anchor.innerText = `${userItem.id} - ${userItem.name}`;
+            //     anchor.href = `./user-details.html?data=${JSON.stringify(userItem)}`;
+            //     userContainer.appendChild(anchor);
+
+
+
 
               usersContainer.appendChild(userContainer);
             }
